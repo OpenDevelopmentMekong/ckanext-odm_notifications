@@ -1,0 +1,12 @@
+{
+  "uploadOnSave": true,
+  "hostname": "192.168.33.10",
+  "target": "/home/vagrant/.virtualenvs/ckan/src/ckanext-odm_notifications/",
+  "ignore": [
+    ".git/**",
+    "**/.pyc"
+  ],
+  "username": "vagrant",
+  "password": "vagrant",
+  "transport": "scp"
+}
