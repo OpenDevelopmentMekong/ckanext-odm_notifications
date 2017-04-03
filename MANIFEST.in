@@ -1,5 +1,6 @@
 recursive-include ckanext/odm_notifications/fanstatic *
 recursive-include ckanext/odm_notifications/logic *
+recursive-include ckanext/odm_notifications/lib *
 recursive-include ckanext/odm_notifications/templates *
 recursive-include ckanext/odm_notifications/i18n *
 recursive-include ckanext *.html *.json

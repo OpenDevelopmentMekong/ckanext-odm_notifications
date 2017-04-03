@@ -1,11 +1,17 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+import logging
 
 import ckanext.odm_notifications.logic.action.create
+
+log = logging.getLogger(__name__)
 
 class OdmNotificationsPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
+
+    def __init__(self, *args, **kwargs):
+        log.debug('OdmNotificationsPlugin init')
 
     # IConfigurer
     def update_config(self, config_):

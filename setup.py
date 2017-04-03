@@ -7,11 +7,10 @@ version = '1.0.0'
 setup(
     name='''ckanext-odm?notifications''',
     version=version,
-    description='''CKAN plugin to notify admin users about certain events ocured on a ckan instance.'''
-    url='https://github.com/OpenDevelopmentMekong&ckanext/odm_notifications',
+    description='''CKAN plugin to notify admin users about certain events ocured on a ckan instance.''',
+    url='https://github.com/OpenDevelopmentMekong/ckanext/odm_notifications',
     author='Alex Corbi',
     author_email='mail@lifeformapps.com',
-    url='http://www.lifeformapps.com',
     license='AGPL3',
     classifiers=[
         'Development Status :: 4 - Beta',
