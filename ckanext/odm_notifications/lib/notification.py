@@ -21,11 +21,9 @@ def notify_user_created(context,user):
 
 def notify(context,user,email_template):
 
-  user_obj = model.User.get(user.id)
-
   extra_vars = {
-    'username': user_obj.name,
-    'email': user_obj.email
+    'username': user.name,
+    'email': user.email
   }
 
   # retrieve all users
