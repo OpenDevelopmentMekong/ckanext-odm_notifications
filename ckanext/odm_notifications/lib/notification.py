@@ -5,6 +5,7 @@ from logging import getLogger
 import ckan.model as model
 import ckan.lib.helpers as h
 from ckan.lib.base import render
+from ckan import logic
 from ckan.logic import action
 from genshi.template.text import NewTextTemplate
 from ckan.lib.mailer import mail_recipient
@@ -20,23 +21,32 @@ def notify_user_created(context,user):
 
 def notify(context,user,email_template):
 
+
   # retrieve all users
   all_organizations = action.get.organization_list(context,data_dict={})
   for organization in all_organizations:
 
-      organization_details = action.get.organization_show(context,data_dict={'id':organization})
+      organization_members = action.get.member_list(context,data_dict={'id':organization,'object_type':'user','capacity':'admin'})
 
-      if 'users' in organization_details:
-          for potential_admin_user in organization_details['users']:
+      for admin_user in organization_members:
 
-            if potential_admin_user['capacity'] == 'admin':
+          try:
 
-              admin_user = model.User.get(potential_admin_user['id'])
-              admin_name = admin_user.name
-              admin_email = admin_user.email
+              user_obj = model.User.get(admin_user[0])
+              admin_name = user_obj.name
+              admin_email = user_obj.email
+
+              extra_vars = {
+                  'username': admin_name,
+                  'email': admin_email
+              }
 
               email_msg = render(email_template,extra_vars=extra_vars,loader_class=NewTextTemplate)
               send_email(admin_name,admin_email,email_msg)
+
+          except logic.NotFound:
+
+              log.error("user %s not found",admin_user[0])
 
 def send_email(contact_name,contact_email,email_msg):
 
