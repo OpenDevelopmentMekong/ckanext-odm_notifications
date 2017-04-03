@@ -21,6 +21,12 @@ def notify_user_created(context,user):
 
 def notify(context,user,email_template):
 
+  user_obj = model.User.get(user.id)
+
+  extra_vars = {
+    'username': user_obj.name,
+    'email': user_obj.email
+  }
 
   # retrieve all users
   all_organizations = action.get.organization_list(context,data_dict={})
@@ -32,14 +38,9 @@ def notify(context,user,email_template):
 
           try:
 
-              user_obj = model.User.get(admin_user[0])
-              admin_name = user_obj.name
-              admin_email = user_obj.email
-
-              extra_vars = {
-                  'username': admin_name,
-                  'email': admin_email
-              }
+              admin_obj = model.User.get(admin_user[0])
+              admin_name = admin_obj.name
+              admin_email = admin_obj.email
 
               email_msg = render(email_template,extra_vars=extra_vars,loader_class=NewTextTemplate)
               send_email(admin_name,admin_email,email_msg)
