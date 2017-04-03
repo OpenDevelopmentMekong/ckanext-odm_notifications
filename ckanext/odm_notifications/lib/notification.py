@@ -32,20 +32,23 @@ def notify(context,user,email_template):
 
       organization_members = action.get.member_list(context,data_dict={'id':organization,'object_type':'user','capacity':'admin'})
 
+      admins = dict()
       for admin_user in organization_members:
 
+          admin_obj = model.User.get(admin_user[0])
+          admin_name = admin_obj.name
+          admin_email = admin_obj.email
+          admins[admin_name] = admin_email
+
+      for name, email in admins.iteritems():
+
           try:
-
-              admin_obj = model.User.get(admin_user[0])
-              admin_name = admin_obj.name
-              admin_email = admin_obj.email
-
               email_msg = render(email_template,extra_vars=extra_vars,loader_class=NewTextTemplate)
-              send_email(admin_name,admin_email,email_msg)
+              send_email(name,email,email_msg)
 
           except logic.NotFound:
 
-              log.error("user %s not found",admin_user[0])
+              log.error("user %s not found",user['name'])
 
 def send_email(contact_name,contact_email,email_msg):
 
