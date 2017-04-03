@@ -22,8 +22,8 @@ def notify_user_created(context,user):
 def notify(context,user,email_template):
 
   extra_vars = {
-    'username': user.name,
-    'email': user.email
+    'username': user['name'],
+    'email': user['email']
   }
 
   # retrieve all users
