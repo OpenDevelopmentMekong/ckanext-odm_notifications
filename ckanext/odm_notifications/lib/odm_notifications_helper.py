@@ -3,7 +3,6 @@
 
 DEBUG = True
 
-import pylons
 import json
 import ckan
 import logging
