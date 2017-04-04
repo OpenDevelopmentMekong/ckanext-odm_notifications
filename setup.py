@@ -19,7 +19,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     keywords='''CKAN user notifications''',
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     namespace_packages=['ckanext'],
     zip_safe=False,
     install_requires=[],
