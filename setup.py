@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages  # Always prefer setuptools over distutils
 import sys, os
 
-version = '1.0.0'
+version = '1.0.1'
 
 setup(
     name='''ckanext-odm?notifications''',
