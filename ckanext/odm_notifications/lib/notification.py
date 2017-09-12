@@ -17,7 +17,22 @@ role_mapper ={'Admin':'admin','Editor':'reader'}
 
 def notify_user_created(context,user):
 
-  notify(context,user,"email/user_created.txt")
+    notify(context,user,"email/user_created.txt")
+
+def notify_fill_form(context,user):
+
+    extra_vars = {
+      'username': user['name'],
+      'email': user['email']
+    }
+
+    try:
+         email_msg = render("email/fill_form.txt",extra_vars=extra_vars,loader_class=NewTextTemplate)
+         send_email(user['name'],user['email'],email_msg,"Welcome to the Open Development Mekong Datahub")
+
+     except logic.NotFound:
+
+         log.error("user %s not found",user['name'])
 
 def notify(context,user,email_template):
 
@@ -44,13 +59,13 @@ def notify(context,user,email_template):
 
           try:
               email_msg = render(email_template,extra_vars=extra_vars,loader_class=NewTextTemplate)
-              send_email(name,email,email_msg)
+              send_email(name,email,email_msg,"User created")
 
           except logic.NotFound:
 
               log.error("user %s not found",user['name'])
 
-def send_email(contact_name,contact_email,email_msg):
+def send_email(contact_name,contact_email,email_msg,subject):
 
   log.debug("send_email to %s %s",contact_name,contact_email)
 
@@ -60,7 +75,7 @@ def send_email(contact_name,contact_email,email_msg):
 
   try:
 
-    mail_recipient(contact_name, contact_email,"User created",email_msg, headers=headers)
+    mail_recipient(contact_name, contact_email,subject,email_msg, headers=headers)
 
   except Exception:
 
