@@ -54,12 +54,12 @@ def notify_fill_form(context,user):
     }
 
     try:
-         email_msg = render("email/fill_form.txt",extra_vars=extra_vars,loader_class=NewTextTemplate)
-         send_email(user['name'],user['email'],email_msg,"Welcome to the Open Development Mekong Datahub")
+        email_msg = render("email/fill_form.txt",extra_vars=extra_vars,loader_class=NewTextTemplate)
+        send_email(user['name'],user['email'],email_msg,"Welcome to the Open Development Mekong Datahub")
 
      except logic.NotFound:
 
-         log.error("user %s not found",user['name'])
+        log.error("user %s not found",user['name'])
 
 def send_email(contact_name,contact_email,email_msg,subject):
 
