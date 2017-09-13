@@ -5,10 +5,10 @@ import sys, os
 version = '1.0.2'
 
 setup(
-    name='''ckanext-odm?notifications''',
+    name='''ckanext-odm_notifications''',
     version=version,
     description='''CKAN plugin to notify admin users about certain events ocured on a ckan instance.''',
-    url='https://github.com/OpenDevelopmentMekong/ckanext/odm_notifications',
+    url='https://github.com/OpenDevelopmentMekong/ckanext-odm_notifications',
     author='Alex Corbi',
     author_email='mail@lifeformapps.com',
     license='AGPL3',
