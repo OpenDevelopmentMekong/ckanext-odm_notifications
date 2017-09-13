@@ -51,7 +51,7 @@ def notify_fill_form(context,user):
     extra_vars = {
       'username': user['name'],
       'email': user['email']
-    }
+        }
 
     try:
         email_msg = render("email/fill_form.txt",extra_vars=extra_vars,loader_class=NewTextTemplate)
