@@ -1,4 +1,4 @@
 
-$username ($email) has been created on data.opendevelopmentmekong.net:
+{{username}} ({{email}}) has been created on data.opendevelopmentmekong.net:
 
 The data.opendevelopmentmekong.net team

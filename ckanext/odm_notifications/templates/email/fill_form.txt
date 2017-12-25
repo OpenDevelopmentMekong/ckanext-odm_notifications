@@ -1,4 +1,4 @@
-Dear $username,
+Dear {{username}},
 
 This notification is to acknowledge that you have successfully created an account on the Open Development Mekong CKAN Datahub.
 

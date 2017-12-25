@@ -39,7 +39,7 @@ def notify_user_created(context,user):
         for name, email in admins.iteritems():
 
             try:
-                email_msg = render("email/user_created.txt",extra_vars=extra_vars,loader_class=NewTextTemplate)
+                email_msg = render("email/user_created.txt",extra_vars=extra_vars)
                 send_email(name,email,email_msg,"User created")
 
             except logic.NotFound:
@@ -53,7 +53,7 @@ def notify_fill_form(context,user):
     }
 
     try:
-        email_msg = render("email/fill_form.txt",extra_vars=extra_vars,loader_class=NewTextTemplate)
+        email_msg = render("email/fill_form.txt",extra_vars=extra_vars)
         send_email(user['name'],user['email'],email_msg,"Welcome to the Open Development Mekong Datahub")
 
     except logic.NotFound:
