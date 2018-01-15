@@ -17,4 +17,6 @@ def user_create(context, data_dict):
 
     notification.notify_user_created(context,user)
 
+    notification.notify_fill_form(context,user)
+
     return user

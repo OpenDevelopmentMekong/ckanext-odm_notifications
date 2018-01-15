@@ -1,0 +1,11 @@
+Dear {{username}},
+
+This notification is to acknowledge that you have successfully created an account on the Open Development Mekong CKAN Datahub.
+
+If you have not already done so, please complete the registration process by filling out a registration form located on our 'contribute data' page. The page provides some details about what it means to become a data contributor and a link to FAQs. As a new user we ask that you complete the registration form to provide us with information about yourself so that we can appropriately assign you to an organisation or create a new one specifically for your organisation. It also provides information about our 'terms of use' which you must agree to prior to contributing.
+
+All your information is kept private and confidential and will not be disclosed unless otherwise specified.
+We look forward to seeing your contributions shortly.
+
+Regards,
+ODM Data Team

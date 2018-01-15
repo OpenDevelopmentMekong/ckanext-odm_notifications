@@ -9,6 +9,17 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "../lib"))
 import mock
 import sys
 
+sys.modules['pylons'] = mock.MagicMock()
+sys.modules['ckan'] = mock.MagicMock()
+sys.modules['ckan.plugins'] = mock.MagicMock()
+sys.modules['ckan.model'] = mock.MagicMock()
+sys.modules['ckan.logic'] = mock.MagicMock()
+sys.modules['ckan.plugins.toolkit'] = mock.MagicMock()
+sys.modules['genshi'] = mock.MagicMock()
+sys.modules['ckan.lib'] = mock.MagicMock()
+sys.modules['ckan.lib.navl'] = mock.MagicMock()
+sys.modules['ckan.lib.navl.dictization_functions'] = mock.MagicMock()
+
 import odm_notifications_helper
 log = logging.getLogger(__name__)
 
@@ -23,4 +34,4 @@ class TestHelpers(unittest.TestCase):
 		"tear down test fixtures"
 
 	def test_dummy(self):
-        assert True
+		assert True
