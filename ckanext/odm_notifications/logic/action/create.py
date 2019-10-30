@@ -1,12 +1,7 @@
-import ckan
-import pylons
 import logging
-
-import ckan.logic as logic
 from ckan.logic.action.create import user_create as ckan_user_create
-import ckan.plugins.toolkit as toolkit
 
-from ckanext.odm_notifications.lib import notification
+from ...lib import notification
 
 log = logging.getLogger(__name__)
 
@@ -15,8 +10,14 @@ def user_create(context, data_dict):
 
     log.debug('User %s has been created, sending notification to admin users', user['name'])
 
-    notification.notify_user_created(context,user)
+    try:
+        notification.notify_user_created(context,user)
+    except Exception as e:
+        log.error("Exception notifying admins of new user: %s" % e)
 
-    notification.notify_fill_form(context,user)
+    try:
+        notification.notify_fill_form(context,user)
+    except Exception as e:
+        log.error("Exception welcoming new user: %s" %e)
 
     return user
