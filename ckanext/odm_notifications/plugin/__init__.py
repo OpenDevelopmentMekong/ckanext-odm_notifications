@@ -1,11 +1,9 @@
 from ckan import plugins
 from ckan.plugins import toolkit
-
+from ckanext.odm_notifications.logic.action import create
 import logging
-
-from .logic.action import create
-
 log = logging.getLogger(__name__)
+
 
 class OdmNotificationsPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
