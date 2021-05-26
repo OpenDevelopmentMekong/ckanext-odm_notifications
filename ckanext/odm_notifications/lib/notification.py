@@ -1,13 +1,11 @@
 import traceback
-
 import logging
-
+import ckan.logic as logic
 import ckan.model as model
 import ckan.lib.helpers as h
 from ckan.lib.base import render
 from genshi.template.text import NewTextTemplate
 from ckan.lib.mailer import mail_recipient
-
 from ckan.plugins import toolkit
 
 

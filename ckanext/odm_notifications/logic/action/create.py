@@ -1,9 +1,9 @@
 import logging
 from ckan.logic.action.create import user_create as ckan_user_create
-
-from ...lib import notification
+from ckanext.odm_notifications.lib import notification
 
 log = logging.getLogger(__name__)
+
 
 def user_create(context, data_dict):
     user = ckan_user_create(context, data_dict)
