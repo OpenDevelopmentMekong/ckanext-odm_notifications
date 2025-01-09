@@ -1,4 +1,3 @@
-import traceback
 import ckan.model as model
 from ckan.plugins import toolkit
 
@@ -57,6 +56,5 @@ def send_email(contact_name,contact_email,email_msg,subject):
 
     try:
         toolkit.mail_recipient(contact_name, contact_email, subject, email_msg, headers=headers)
-    except Exception as msg:
-        traceback.print_exc()
-        log.error('Failed to send an email message for issue notification: %s', msg)
+    except:
+        log.exception('Failed to send an email message for issue notification') 

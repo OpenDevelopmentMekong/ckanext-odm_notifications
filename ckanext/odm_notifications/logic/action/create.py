@@ -1,11 +1,12 @@
 import logging
-from ckan.logic.action.create import user_create as ckan_user_create
+from ckan.plugins import toolkit
 from ckanext.odm_notifications.lib import notification
 
 log = logging.getLogger(__name__)
 
 
-def user_create(context, data_dict):
+@toolkit.chained_action
+def user_create(ckan_user_create, context, data_dict):
     user = ckan_user_create(context, data_dict)
 
     log.debug('User %s has been created, sending notification to admin users', user['name'])
